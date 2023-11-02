@@ -4,23 +4,21 @@ import Item from "./Entities/Item";
 import Footer from "./components/Footer";
 import List from "./components/List";
 import Navbar from "./components/Navbar";
-
-const items: Item[] = [
-  {
-    id: crypto.randomUUID().toString(),
-    completed: false,
-    date: new Date(),
-    name: "Mleko",
-  },
-  {
-    id: crypto.randomUUID().toString(),
-    completed: false,
-    date: new Date(),
-    name: "Jajka",
-  },
-];
+import { useState } from "react";
 
 function App() {
+  const [items, setItems] = useState<Item[]>([]);
+
+  const handleAddItem = (name: string) => {
+    const newItem = {
+      id: crypto.randomUUID().toString(),
+      completed: false,
+      date: new Date(),
+      name,
+    };
+    setItems([newItem, ...items]);
+  };
+
   return (
     <Flex
       minWidth={"max-content"}
@@ -33,7 +31,7 @@ function App() {
       <Box flex="1" overflow={"scroll"}>
         <List items={items}></List>
       </Box>
-      <Footer></Footer>
+      <Footer onAddItem={handleAddItem}></Footer>
     </Flex>
   );
 }
