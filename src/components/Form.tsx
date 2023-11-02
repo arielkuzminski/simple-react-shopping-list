@@ -1,4 +1,4 @@
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { Input, InputGroup } from "@chakra-ui/react";
 import { useRef } from "react";
 
 interface Props {
@@ -19,7 +19,6 @@ const Form = ({ addItem }: Props) => {
       }}
     >
       <InputGroup>
-        {/* <InputLeftElement children={<BsSearch />} /> */}
         <Input ref={ref} placeholder="Add new product..." variant="filled" />
       </InputGroup>
     </form>

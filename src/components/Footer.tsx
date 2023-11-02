@@ -1,4 +1,4 @@
-import { Box, Input } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import Form from "./Form";
 
 interface Props {
@@ -10,7 +10,6 @@ const Footer = ({ onAddItem }: Props) => {
   return (
     <Box padding={5}>
       <Form addItem={handleAddItem} />
-      {/* <Input placeholder="Add new product" onChange={handleChange} /> */}
     </Box>
   );
 };
