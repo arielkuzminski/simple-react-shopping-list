@@ -8,7 +8,7 @@ const useItems = () => {
   });
 
   const clearItems = () => {
-    const filteredItems: Item[] = [];
+    const filteredItems: Item[] = items.filter((i) => !i.completed);
     setItems(filteredItems);
     localStorage.setItem("items", JSON.stringify(filteredItems));
   };

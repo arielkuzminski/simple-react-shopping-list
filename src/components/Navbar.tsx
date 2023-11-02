@@ -14,7 +14,7 @@ const Navbar = ({ onClearItems }: Props) => {
         variant="outline"
         onClick={onClearItems}
       >
-        Clear
+        Clear completed
       </Button>
     </Stack>
   );
