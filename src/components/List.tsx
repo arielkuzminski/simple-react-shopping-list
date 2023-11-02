@@ -4,13 +4,18 @@ import ItemComponent from "./ItemComponent";
 
 interface Props {
   items: Item[];
+  onEditItem: (item: Item) => void;
 }
 
-const List = ({ items }: Props) => {
+const List = ({ items, onEditItem }: Props) => {
   return (
     <Flex direction={"column"}>
       {items.map((item) => (
-        <ItemComponent item={item} key={item.id}></ItemComponent>
+        <ItemComponent
+          item={item}
+          key={item.id}
+          onEditItem={onEditItem}
+        ></ItemComponent>
       ))}
     </Flex>
   );

@@ -7,6 +7,12 @@ const useItems = () => {
     return storedItems ? JSON.parse(storedItems) : [];
   });
 
+  const clearItems = () => {
+    const filteredItems: Item[] = [];
+    setItems(filteredItems);
+    localStorage.setItem("items", JSON.stringify(filteredItems));
+  };
+
   const handleAddItem = (name: string) => {
     const newItem = {
       id: crypto.randomUUID().toString(),
@@ -18,7 +24,17 @@ const useItems = () => {
     setItems(updatedItems);
     localStorage.setItem("items", JSON.stringify(updatedItems));
   };
-  return { items, handleAddItem };
+
+  const editItem = (item: Item) => {
+    const updatedItems = items.map((i) =>
+      i.id === item.id ? { ...i, completed: !i.completed } : i
+    );
+
+    setItems(updatedItems);
+    localStorage.setItem("items", JSON.stringify(updatedItems));
+  };
+
+  return { items, handleAddItem, editItem, clearItems };
 };
 
 export default useItems;

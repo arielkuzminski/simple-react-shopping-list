@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import useItems from "./hooks/useItems";
 
 function App() {
-  const { items, handleAddItem } = useItems();
+  const { items, handleAddItem, editItem, clearItems } = useItems();
 
   return (
     <Flex
@@ -17,9 +17,9 @@ function App() {
       height={"100vh"}
       maxW={"100vw"}
     >
-      <Navbar></Navbar>
-      <Box flex="1" overflow={"scroll"} width={"full"} padding={2}>
-        <List items={items}></List>
+      <Navbar onClearItems={clearItems}></Navbar>
+      <Box flex="1" overflow={"auto"} width={"full"} padding={2}>
+        <List onEditItem={editItem} items={items}></List>
       </Box>
       <Footer onAddItem={handleAddItem}></Footer>
     </Flex>
