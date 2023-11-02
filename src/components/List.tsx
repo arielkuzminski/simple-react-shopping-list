@@ -1,12 +1,18 @@
-import { Box, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
+import Item from "../Entities/Item";
+import ItemComponent from "./ItemComponent";
 
-const List = () => {
+interface Props {
+  items: Item[];
+}
+
+const List = ({ items }: Props) => {
   return (
-    <UnorderedList>
-      <ListItem>Lorem ipsum dolor sit amet</ListItem>
-      <ListItem>Consectetur adipiscing elit</ListItem>
-      <ListItem>Integer molestie lorem at massa</ListItem>
-    </UnorderedList>
+    <Flex direction={"column"}>
+      {items.map((item) => (
+        <ItemComponent item={item} key={item.id}></ItemComponent>
+      ))}
+    </Flex>
   );
 };
 

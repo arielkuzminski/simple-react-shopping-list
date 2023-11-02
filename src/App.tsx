@@ -1,8 +1,24 @@
 import { Box, Flex } from "@chakra-ui/react";
 import "./App.css";
+import Item from "./Entities/Item";
 import Footer from "./components/Footer";
 import List from "./components/List";
 import Navbar from "./components/Navbar";
+
+const items: Item[] = [
+  {
+    id: crypto.randomUUID().toString(),
+    completed: false,
+    date: new Date(),
+    name: "Mleko",
+  },
+  {
+    id: crypto.randomUUID().toString(),
+    completed: false,
+    date: new Date(),
+    name: "Jajka",
+  },
+];
 
 function App() {
   return (
@@ -15,7 +31,7 @@ function App() {
     >
       <Navbar></Navbar>
       <Box flex="1" overflow={"scroll"}>
-        <List></List>
+        <List items={items}></List>
       </Box>
       <Footer></Footer>
     </Flex>
