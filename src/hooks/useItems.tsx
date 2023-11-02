@@ -2,7 +2,10 @@ import { useState } from "react";
 import Item from "../Entities/Item";
 
 const useItems = () => {
-  const [items, setItems] = useState<Item[]>([]);
+  const [items, setItems] = useState<Item[]>(() => {
+    const storedItems = localStorage.getItem("items");
+    return storedItems ? JSON.parse(storedItems) : [];
+  });
 
   const handleAddItem = (name: string) => {
     const newItem = {
@@ -11,7 +14,9 @@ const useItems = () => {
       date: new Date(),
       name,
     };
-    setItems([newItem, ...items]);
+    const updatedItems = [newItem, ...items];
+    setItems(updatedItems);
+    localStorage.setItem("items", JSON.stringify(updatedItems));
   };
   return { items, handleAddItem };
 };
