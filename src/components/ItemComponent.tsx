@@ -10,6 +10,7 @@ const ItemComponent = ({ item }: Props) => {
   const [isChecked, setIsChecked] = useState(false);
   return (
     <Checkbox
+      size={"lg"}
       isChecked={isChecked}
       textDecoration={isChecked ? "line-through" : ""}
       onChange={() => setIsChecked(!isChecked)}

@@ -11,6 +11,7 @@ const Form = ({ addItem }: Props) => {
     <form
       onSubmit={(event) => {
         event.preventDefault();
+        if (!ref.current?.value) return;
         if (ref.current) {
           addItem(ref.current.value);
           ref.current.value = "";
