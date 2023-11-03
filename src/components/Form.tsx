@@ -16,6 +16,7 @@ const Form = ({ addItem }: Props) => {
         if (ref.current) {
           addItem(ref.current.value);
           ref.current.value = "";
+          ref.current.focus();
         }
       }}
     >
