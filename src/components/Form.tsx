@@ -20,7 +20,12 @@ const Form = ({ addItem }: Props) => {
       }}
     >
       <InputGroup gap={2}>
-        <Input ref={ref} placeholder="Add new product..." variant="filled" />
+        <Input
+          ref={ref}
+          placeholder="Add new product..."
+          variant="filled"
+          type="text"
+        />
         <Button type="submit">
           <Icon as={BsPlus} boxSize={6}></Icon>
         </Button>
