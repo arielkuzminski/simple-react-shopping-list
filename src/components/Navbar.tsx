@@ -1,4 +1,4 @@
-import { HStack, Button, useColorMode, Flex, Spacer } from "@chakra-ui/react";
+import { Button, useColorMode, Flex, Spacer } from "@chakra-ui/react";
 import { BsTrash, BsSun, BsMoon } from "react-icons/bs";
 
 interface Props {
