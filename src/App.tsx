@@ -14,8 +14,8 @@ function App() {
       alignItems={"center"}
       gap={2}
       direction={"column"}
-      height={"100vh"}
-      maxW={"100vw"}
+      height={"100dvh"}
+      maxW={"100dvw"}
     >
       <Navbar onClearItems={clearItems}></Navbar>
       <Box flex="1" overflow={"auto"} width={"full"} padding={2}>
