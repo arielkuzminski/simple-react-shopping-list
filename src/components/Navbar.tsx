@@ -1,22 +1,28 @@
-import { Stack, Button } from "@chakra-ui/react";
-import { BsTrash } from "react-icons/bs";
+import { HStack, Button, useColorMode, Flex, Spacer } from "@chakra-ui/react";
+import { BsTrash, BsSun, BsMoon } from "react-icons/bs";
 
 interface Props {
   onClearItems: () => void;
 }
 
 const Navbar = ({ onClearItems }: Props) => {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Stack direction="row" spacing={4} padding={4}>
+    <Flex minWidth="max-content" alignItems="center" gap="2" width={"full"}>
+      <Button onClick={toggleColorMode} margin={2}>
+        {colorMode === "light" ? <BsMoon /> : <BsSun />}
+      </Button>
+      <Spacer />
       <Button
         rightIcon={<BsTrash />}
         colorScheme="blue"
         variant="outline"
         onClick={onClearItems}
+        margin={2}
       >
         Clear completed
       </Button>
-    </Stack>
+    </Flex>
   );
 };
 
