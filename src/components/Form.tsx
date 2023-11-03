@@ -1,5 +1,6 @@
-import { Input, InputGroup } from "@chakra-ui/react";
+import { Button, Icon, Input, InputGroup } from "@chakra-ui/react";
 import { useRef } from "react";
+import { BsPlus } from "react-icons/bs";
 
 interface Props {
   addItem: (name: string) => void;
@@ -18,8 +19,11 @@ const Form = ({ addItem }: Props) => {
         }
       }}
     >
-      <InputGroup>
+      <InputGroup gap={2}>
         <Input ref={ref} placeholder="Add new product..." variant="filled" />
+        <Button type="submit">
+          <Icon as={BsPlus} boxSize={6}></Icon>
+        </Button>
       </InputGroup>
     </form>
   );
