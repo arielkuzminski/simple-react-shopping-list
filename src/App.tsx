@@ -18,7 +18,7 @@ function App() {
         height={"100dvh"}
         maxW={"100dvw"}
       >
-        <Navbar onClearItems={clearItems} count={items.length}></Navbar>
+        <Navbar onClearItems={clearItems} count={items.length} completed={items.filter(item => item.completed).length}></Navbar>
         <Box flex="1" overflow={"auto"} width={"full"} padding={2}>
           <List onEditItem={editItem} items={items}></List>
         </Box>

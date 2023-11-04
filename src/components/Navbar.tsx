@@ -3,10 +3,11 @@ import { BsTrash, BsSun, BsMoon } from "react-icons/bs";
 
 interface Props {
   count: number;
+  completed: number;
   onClearItems: () => void;
 }
 
-const Navbar = ({ onClearItems, count }: Props) => {
+const Navbar = ({ onClearItems, count, completed }: Props) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex minWidth="max-content" alignItems="center" gap="2" width={"full"}>
@@ -15,7 +16,7 @@ const Navbar = ({ onClearItems, count }: Props) => {
       </Button>
       <Spacer />
 
-      {count > 0 && <Button
+      {count > 0 && completed > 0 && <Button
         rightIcon={<BsTrash />}
         colorScheme="blue"
         variant="outline"
