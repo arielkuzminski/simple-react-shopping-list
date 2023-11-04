@@ -2,10 +2,11 @@ import { Button, useColorMode, Flex, Spacer } from "@chakra-ui/react";
 import { BsTrash, BsSun, BsMoon } from "react-icons/bs";
 
 interface Props {
+  count: number;
   onClearItems: () => void;
 }
 
-const Navbar = ({ onClearItems }: Props) => {
+const Navbar = ({ onClearItems, count }: Props) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex minWidth="max-content" alignItems="center" gap="2" width={"full"}>
@@ -13,7 +14,8 @@ const Navbar = ({ onClearItems }: Props) => {
         {colorMode === "light" ? <BsMoon /> : <BsSun />}
       </Button>
       <Spacer />
-      <Button
+
+      {count > 0 && <Button
         rightIcon={<BsTrash />}
         colorScheme="blue"
         variant="outline"
@@ -21,7 +23,7 @@ const Navbar = ({ onClearItems }: Props) => {
         margin={2}
       >
         Clear completed
-      </Button>
+      </Button>}
     </Flex>
   );
 };
