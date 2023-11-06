@@ -1,12 +1,11 @@
 import { Button, Icon, Input, InputGroup } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { BsPlus } from "react-icons/bs";
+import ProductContext from "../context";
 
-interface Props {
-  addItem: (name: string) => void;
-}
+const Form = () => {
+  const { dispatch } = useContext(ProductContext);
 
-const Form = ({ addItem }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
   return (
     <form
@@ -14,7 +13,7 @@ const Form = ({ addItem }: Props) => {
         event.preventDefault();
         if (!ref.current?.value) return;
         if (ref.current) {
-          addItem(ref.current.value);
+          dispatch({ type: "ADD", name: ref.current.value });
           ref.current.value = "";
           ref.current.focus();
         }
