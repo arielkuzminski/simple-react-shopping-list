@@ -11,10 +11,6 @@ import { useContext } from "react";
 import { BsMoon, BsSun, BsTrash } from "react-icons/bs";
 import ProductContext from "../context";
 
-interface Props {
-  onSort: (id: string) => void;
-}
-
 const sorting = [
   {
     id: "byDate",
@@ -30,13 +26,13 @@ const sorting = [
   },
 ];
 
-const Navbar = ({ onSort }: Props) => {
+const Navbar = () => {
   const { items, dispatch } = useContext(ProductContext);
   const { colorMode, toggleColorMode } = useColorMode();
 
   const completed = items.filter((item) => item.completed).length;
   const handleChange = (id: string) => {
-    onSort(id);
+    dispatch({ type: "SORT", sort: id });
   };
   return (
     <Flex

@@ -10,11 +10,16 @@ interface EditItem {
   item: Item;
 }
 
+interface SortItems {
+  type: "SORT";
+  sort: string;
+}
+
 interface ClearItems {
   type: "CLEAR";
 }
 
-export type ItemAction = AddItem | EditItem | ClearItems;
+export type ItemAction = AddItem | EditItem | ClearItems | SortItems;
 
 const productReducer = (state: Item[], action: ItemAction): Item[] => {
   if (action.type === "ADD") {
@@ -43,6 +48,24 @@ const productReducer = (state: Item[], action: ItemAction): Item[] => {
     const filteredItems: Item[] = state.filter((i) => !i.completed);
     localStorage.setItem("items", JSON.stringify(filteredItems));
     return filteredItems;
+  }
+
+  if (action.type === "SORT") {
+    let sortedItems = [...state];
+
+    if (action.sort === "byDate") {
+      return sortedItems.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+    }
+
+    if (action.sort === "byName") {
+      return sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    if (action.sort === "byCompleted") {
+      return sortedItems.sort((a, b) => +a.completed - +b.completed);
+    }
   }
 
   return state;
