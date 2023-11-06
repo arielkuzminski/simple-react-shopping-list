@@ -1,18 +1,17 @@
 import {
   Button,
-  useColorMode,
   Flex,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
+  useColorMode,
 } from "@chakra-ui/react";
-import { BsTrash, BsSun, BsMoon } from "react-icons/bs";
+import { useContext } from "react";
+import { BsMoon, BsSun, BsTrash } from "react-icons/bs";
+import ProductContext from "../context";
 
 interface Props {
-  count: number;
-  completed: number;
-  onClearItems: () => void;
   onSort: (id: string) => void;
 }
 
@@ -31,8 +30,11 @@ const sorting = [
   },
 ];
 
-const Navbar = ({ onClearItems, onSort, count, completed }: Props) => {
+const Navbar = ({ onSort }: Props) => {
+  const { items, dispatch } = useContext(ProductContext);
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const completed = items.filter((item) => item.completed).length;
   const handleChange = (id: string) => {
     onSort(id);
   };
@@ -61,12 +63,12 @@ const Navbar = ({ onClearItems, onSort, count, completed }: Props) => {
         </MenuList>
       </Menu>
 
-      {count > 0 && completed > 0 && (
+      {completed > 0 && (
         <Button
           rightIcon={<BsTrash />}
           colorScheme="blue"
           variant="outline"
-          onClick={onClearItems}
+          onClick={() => dispatch({ type: "CLEAR" })}
         >
           Clear completed
         </Button>

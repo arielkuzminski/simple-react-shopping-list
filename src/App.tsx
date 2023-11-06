@@ -46,12 +46,7 @@ function App() {
           height={"100dvh"}
           maxW={"100dvw"}
         >
-          <Navbar
-            onSort={setSorting}
-            onClearItems={() => dispatch({ type: "CLEAR" })}
-            count={items.length}
-            completed={items.filter((item) => item.completed).length}
-          ></Navbar>
+          <Navbar onSort={setSorting}></Navbar>
           <Box flex="1" overflow={"auto"} width={"full"} padding={2}>
             <List
               onEditItem={(item) => dispatch({ type: "EDIT", item })}
