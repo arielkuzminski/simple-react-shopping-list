@@ -4,10 +4,9 @@ import ItemComponent from "./ItemComponent";
 
 interface Props {
   items: Item[];
-  onEditItem: (item: Item) => void;
 }
 
-const List = ({ items, onEditItem }: Props) => {
+const List = ({ items }: Props) => {
   if (!items.length)
     return (
       <Text textAlign={"center"} color={"gray.500"}>
@@ -17,11 +16,7 @@ const List = ({ items, onEditItem }: Props) => {
   return (
     <Flex direction={"column"}>
       {items.map((item) => (
-        <ItemComponent
-          item={item}
-          key={item.id}
-          onEditItem={onEditItem}
-        ></ItemComponent>
+        <ItemComponent item={item} key={item.id}></ItemComponent>
       ))}
     </Flex>
   );

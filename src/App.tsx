@@ -48,10 +48,7 @@ function App() {
         <ProductContext.Provider value={{ items, dispatch }}>
           <Navbar onSort={setSorting}></Navbar>
           <Box flex="1" overflow={"auto"} width={"full"} padding={2}>
-            <List
-              onEditItem={(item) => dispatch({ type: "EDIT", item })}
-              items={sortedItems}
-            ></List>
+            <List items={sortedItems}></List>
           </Box>
           <Footer></Footer>
         </ProductContext.Provider>

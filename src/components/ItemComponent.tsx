@@ -1,26 +1,21 @@
 import { Checkbox } from "@chakra-ui/react";
+import { useContext } from "react";
 import Item from "../Entities/Item";
-import { useState } from "react";
+import ProductContext from "../context";
 
 interface Props {
   item: Item;
-  onEditItem: (item: Item) => void;
 }
 
-const ItemComponent = ({ item, onEditItem }: Props) => {
-  const [isChecked, setIsChecked] = useState(item.completed);
-
-  const handleCheckItem = () => {
-    setIsChecked(!isChecked);
-    onEditItem(item);
-  };
+const ItemComponent = ({ item }: Props) => {
+  const { dispatch } = useContext(ProductContext);
 
   return (
     <Checkbox
       size={"lg"}
-      isChecked={isChecked}
-      textDecoration={isChecked ? "line-through" : ""}
-      onChange={() => handleCheckItem()}
+      isChecked={item.completed}
+      textDecoration={item.completed ? "line-through" : ""}
+      onChange={() => dispatch({ type: "EDIT", item })}
     >
       {item.name}
     </Checkbox>
