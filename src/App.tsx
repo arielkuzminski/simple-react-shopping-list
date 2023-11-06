@@ -36,16 +36,16 @@ function App() {
   const sortedItems = handleSorting();
 
   return (
-    <ProductContext.Provider value={{ items, dispatch }}>
-      <Container>
-        <Flex
-          minWidth={"max-content"}
-          alignItems={"center"}
-          gap={2}
-          direction={"column"}
-          height={"100dvh"}
-          maxW={"100dvw"}
-        >
+    <Container>
+      <Flex
+        minWidth={"max-content"}
+        alignItems={"center"}
+        gap={2}
+        direction={"column"}
+        height={"100dvh"}
+        maxW={"100dvw"}
+      >
+        <ProductContext.Provider value={{ items, dispatch }}>
           <Navbar onSort={setSorting}></Navbar>
           <Box flex="1" overflow={"auto"} width={"full"} padding={2}>
             <List
@@ -54,9 +54,9 @@ function App() {
             ></List>
           </Box>
           <Footer></Footer>
-        </Flex>
-      </Container>
-    </ProductContext.Provider>
+        </ProductContext.Provider>
+      </Flex>
+    </Container>
   );
 }
 
