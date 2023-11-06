@@ -16,16 +16,20 @@ function App() {
   return (
     <Container>
       <Flex
-        minWidth={"max-content"}
         alignItems={"center"}
         gap={2}
         direction={"column"}
         height={"100dvh"}
-        maxW={"100dvw"}
       >
         <ProductContext.Provider value={{ items, dispatch }}>
           <Navbar></Navbar>
-          <Box flex="1" overflow={"auto"} width={"full"} padding={2}>
+          <Box
+            flex="1"
+            overflow={"auto"}
+            padding={2}
+            maxWidth={"100dvw"}
+            width={"full"}
+          >
             <List items={items}></List>
           </Box>
           <Footer></Footer>

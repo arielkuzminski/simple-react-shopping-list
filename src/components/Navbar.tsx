@@ -36,11 +36,12 @@ const Navbar = () => {
   };
   return (
     <Flex
-      minWidth="max-content"
       alignItems="center"
       gap="2"
       width={"full"}
       marginTop={2}
+      wrap={"wrap"}
+      maxWidth={"100dvw"}
     >
       <Button onClick={toggleColorMode}>
         {colorMode === "light" ? <BsMoon /> : <BsSun />}
