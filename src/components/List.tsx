@@ -1,12 +1,11 @@
 import { Flex, Text } from "@chakra-ui/react";
-import Item from "../Entities/Item";
+import { useContext } from "react";
+import ProductContext from "../context";
 import ItemComponent from "./ItemComponent";
 
-interface Props {
-  items: Item[];
-}
+const List = () => {
+  const { items } = useContext(ProductContext);
 
-const List = ({ items }: Props) => {
   if (!items.length)
     return (
       <Text textAlign={"center"} color={"gray.500"}>

@@ -1,18 +1,11 @@
 import { Box, Container, Flex } from "@chakra-ui/react";
-import { useReducer } from "react";
 import "./App.css";
+import ProductProvider from "./ProductProvider";
 import Footer from "./components/Footer";
 import List from "./components/List";
 import Navbar from "./components/Navbar";
-import ProductContext from "./context";
-import productReducer from "./reducer";
 
 function App() {
-  const localStorageItems = localStorage.getItem("items");
-  const storedItems = localStorageItems ? JSON.parse(localStorageItems) : [];
-
-  const [items, dispatch] = useReducer(productReducer, storedItems);
-
   return (
     <Container>
       <Flex
@@ -21,7 +14,7 @@ function App() {
         direction={"column"}
         height={"100dvh"}
       >
-        <ProductContext.Provider value={{ items, dispatch }}>
+        <ProductProvider>
           <Navbar></Navbar>
           <Box
             flex="1"
@@ -30,10 +23,10 @@ function App() {
             maxWidth={"100dvw"}
             width={"full"}
           >
-            <List items={items}></List>
+            <List></List>
           </Box>
           <Footer></Footer>
-        </ProductContext.Provider>
+        </ProductProvider>
       </Flex>
     </Container>
   );
