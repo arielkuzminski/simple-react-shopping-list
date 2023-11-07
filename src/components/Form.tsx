@@ -1,10 +1,10 @@
 import { Button, Icon, Input, InputGroup } from "@chakra-ui/react";
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { BsPlus } from "react-icons/bs";
-import ProductContext from "../context";
+import useProducts from "../hooks/useProducts";
 
 const Form = () => {
-  const { dispatch } = useContext(ProductContext);
+  const { dispatch } = useProducts();
 
   const ref = useRef<HTMLInputElement>(null);
   return (

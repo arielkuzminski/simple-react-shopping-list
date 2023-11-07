@@ -1,10 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { useContext } from "react";
-import ProductContext from "../context";
+import useProducts from "../hooks/useProducts";
 import ItemComponent from "./ItemComponent";
 
 const List = () => {
-  const { items } = useContext(ProductContext);
+  const { items } = useProducts();
 
   if (!items.length)
     return (

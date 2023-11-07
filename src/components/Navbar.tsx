@@ -7,9 +7,9 @@ import {
   MenuList,
   useColorMode,
 } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { BsMoon, BsSun, BsTrash } from "react-icons/bs";
-import ProductContext from "../context";
+import useProducts from "../hooks/useProducts";
 
 const sorting = [
   {
@@ -27,7 +27,7 @@ const sorting = [
 ];
 
 const Navbar = () => {
-  const { items, dispatch } = useContext(ProductContext);
+  const { items, dispatch } = useProducts();
   const { colorMode, toggleColorMode } = useColorMode();
   const [sorted, setSorted] = useState(() => {
     const localStorageSort = localStorage.getItem("sort") ?? "byName";
