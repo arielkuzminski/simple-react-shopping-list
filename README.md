@@ -2,7 +2,8 @@
 
 # https://simple-react-shopping-list.vercel.app/
 
-## Instal:
+## Install:
 
 `npm install`
+
 `npm run dev`
