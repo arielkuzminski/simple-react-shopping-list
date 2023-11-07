@@ -52,19 +52,26 @@ const productReducer = (state: Item[], action: ItemAction): Item[] => {
 
   if (action.type === "SORT") {
     let sortedItems = [...state];
+    localStorage.setItem("sort", action.sort);
 
     if (action.sort === "byDate") {
-      return sortedItems.sort(
+      sortedItems.sort(
         (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
       );
+      localStorage.setItem("items", JSON.stringify(sortedItems));
+      return sortedItems;
     }
 
     if (action.sort === "byName") {
-      return sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+      sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+      localStorage.setItem("items", JSON.stringify(sortedItems));
+      return sortedItems;
     }
 
     if (action.sort === "byCompleted") {
-      return sortedItems.sort((a, b) => +a.completed - +b.completed);
+      sortedItems.sort((a, b) => +a.completed - +b.completed);
+      localStorage.setItem("items", JSON.stringify(sortedItems));
+      return sortedItems;
     }
   }
 

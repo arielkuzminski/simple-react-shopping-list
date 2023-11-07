@@ -7,7 +7,7 @@ import {
   MenuList,
   useColorMode,
 } from "@chakra-ui/react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { BsMoon, BsSun, BsTrash } from "react-icons/bs";
 import ProductContext from "../context";
 
@@ -29,9 +29,14 @@ const sorting = [
 const Navbar = () => {
   const { items, dispatch } = useContext(ProductContext);
   const { colorMode, toggleColorMode } = useColorMode();
+  const [sorted, setSorted] = useState(() => {
+    const localStorageSort = localStorage.getItem("sort") ?? "byName";
+    return localStorageSort;
+  });
 
   const completed = items.filter((item) => item.completed).length;
   const handleChange = (id: string) => {
+    setSorted(id);
     dispatch({ type: "SORT", sort: id });
   };
   return (
@@ -47,7 +52,9 @@ const Navbar = () => {
         {colorMode === "light" ? <BsMoon /> : <BsSun />}
       </Button>
       <Menu>
-        <MenuButton as={Button}>Sort by:</MenuButton>
+        <MenuButton as={Button}>
+          Sort by: {sorting.find((i) => i.id === sorted)?.title}
+        </MenuButton>
         <MenuList>
           {sorting.map((menuItem) => (
             <MenuItem
