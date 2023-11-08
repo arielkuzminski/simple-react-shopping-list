@@ -12,7 +12,7 @@ const ItemComponent = ({ item }: Props) => {
 
   return (
     <Checkbox
-      size={"lg"}
+      size={"xl"}
       isChecked={item.completed}
       textDecoration={item.completed ? "line-through" : ""}
       onChange={() => dispatch({ type: "EDIT", item })}
