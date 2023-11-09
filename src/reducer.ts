@@ -56,7 +56,7 @@ const productReducer = (state: Item[], action: ItemAction): Item[] => {
 
     if (action.sort === "byDate") {
       sortedItems.sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
       );
       localStorage.setItem("items", JSON.stringify(sortedItems));
       return sortedItems;
